@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">TO DO LIST</string>
+    <color name="white">#FFFFFFFF</color>
+    <string name="no_internet_connection_found_please_connect_then_try_again">No network connection found.Please connect then try again</string>
+    <string name="retry">RETRY</string>
+
+
+</resources>

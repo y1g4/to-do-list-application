@@ -1,8 +1,12 @@
 package com.example.app;
 
-import java.util.Date;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
+import java.util.Date;
+@Entity(tableName = "task")
 public class Task {
+    @PrimaryKey(autoGenerate = true)
     private int id;
 
     private String description;

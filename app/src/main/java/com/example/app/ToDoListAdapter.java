@@ -2,7 +2,9 @@ package com.example.app;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,14 +52,10 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.TaskVi
         Task taskEntry = mTaskEntries.get(position);
         String description = taskEntry.getDescription();
         int priority = taskEntry.getPriority();
-
         final int id = taskEntry.getId(); // get item id
         String updatedAt = dateFormat.format(taskEntry.getUpdatedAt());
 
-
-
-
-        //Set values
+        // Set values
         holder.taskDescriptionView.setText(description);
         holder.updatedAtView.setText(updatedAt);
 
@@ -65,22 +63,27 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.TaskVi
         String priorityString = "" + priority; // converts int to String
         holder.priorityView.setText(priorityString);
 
-        GradientDrawable priorityCircle = (GradientDrawable) holder.priorityView.getBackground();
-        // Get the appropriate background color based on the priority
-        int priorityColor = getPriorityColor(priority);
-        priorityCircle.setColor(priorityColor);
-
+        Drawable background = holder.priorityView.getBackground();
+        if (background instanceof GradientDrawable) {
+            GradientDrawable priorityCircle = (GradientDrawable) background;
+            // Get the appropriate background color based on the priority
+            int priorityColor = getPriorityColor(priority);
+            priorityCircle.setColor(priorityColor);
+        } else {
+            Log.e("DrawableError", "Drawable is not a GradientDrawable");
+        }
 
         // set Onclick Listener
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(mContext,EditorActivity.class);
-                intent.putExtra("id",id);
+                Intent intent = new Intent(mContext, EditorActivity.class);
+                intent.putExtra("id", id);
                 mContext.startActivity(intent);
             }
         });
     }
+
 
 
     private int getPriorityColor(int priority) {

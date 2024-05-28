@@ -1,5 +1,6 @@
 package com.example.app;
 
+import androidx.room.ColumnInfo;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
@@ -11,6 +12,7 @@ public class Task {
 
     private String description;
     private int priority;
+    @ColumnInfo(name = "updated_at")
     private Date updatedAt;
 
 

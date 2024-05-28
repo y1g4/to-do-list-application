@@ -40,17 +40,12 @@
     <!-- A priority circle that is colored in programmatically in the adapter code -->
     <TextView
         android:id="@+id/priorityTextView"
-        style="@style/TextAppearance.AppCompat.Small"
-        android:layout_width="22dp"
-        android:layout_height="22dp"
-        android:layout_gravity="center"
-        android:layout_marginLeft="8dp"
-        android:layout_marginStart="8dp"
-        android:background="@drawable/baseline_circle_24"
-        android:gravity="center"
-        android:textAlignment="center"
-        android:textColor="@android:color/primary_text_light"
-        tools:text="1" />
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/priority_background"
+        android:text="1"
+        android:textSize="16sp"/>
+
 
 </LinearLayout>
 
